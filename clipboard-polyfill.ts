@@ -9,10 +9,9 @@ var PromiseOrPolyfill = (typeof Promise === "undefined") ? PromisePolyfill : Pro
 // TODO: Compile debug logging code out of production builds?
 var debugLog: (s: string) => void = function(s: string) {};
 var showWarnings = true;
-var warnOrLog = function() {
-  (console.warn || console.log).call(arguments);
-}; // IE9 workaround (can't bind console functions).
-var warn = warnOrLog.bind(console, "[clipboard-polyfill]");
+var warn = function(message: string) {
+  console.log("[clipboard-polyfill]", message);
+};
 
 var TEXT_PLAIN = "text/plain";
 
